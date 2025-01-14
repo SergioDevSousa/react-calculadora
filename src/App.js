@@ -4,7 +4,6 @@ import { Container, Content, Row} from './styles';
 import { useState } from 'react';
 
 
-
 function App() {
   const [currentNumber, setCurrentNumber] = useState(0)
   const [firstNumber, setFirstNumber] = useState('0');
@@ -51,8 +50,21 @@ function App() {
       setOperation('*');
     }else {
       const sum = Number(firstNumber) * Number(currentNumber);
-      setCurrentNumber(String(sum))
-      setOperation('')
+      setCurrentNumber(String(sum));
+      setOperation('');
+    }
+  }
+
+  const handleDivisionNumbers = () => {
+    if (firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0');
+      setOperation('/');
+
+    }else{
+      const sum = Number(firstNumber) / Number(currentNumber);
+      setCurrentNumber(String(sum));
+      setOperation('');
     }
   }
 
@@ -69,6 +81,9 @@ function App() {
           case '*':
             handleMultiplicationNumbers();
             break;
+          case '/':
+            handleDivisionNumbers();
+            break
           default: 
             break;
         }
@@ -85,7 +100,7 @@ function App() {
           <Button label="ce" onClick={() => handleAddNumber('ce')}/>
           <Button label="%" onClick={() => handleAddNumber('%')}/>
           <Button label="C" onClick={(handleOnClear)}/>
-          <Button label="/" onClick={() => handleAddNumber('/')}/>
+          <Button label="/" onClick={handleDivisionNumbers}/>
         </Row>
         <Row>
           <Button label="7" onClick={() => handleAddNumber('7')}/>
