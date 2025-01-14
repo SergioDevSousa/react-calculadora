@@ -44,6 +44,17 @@ function App() {
     }
 
   }
+  const handleMultiplicationNumbers = () => {
+    if(firstNumber === '0'){
+      setFirstNumber(String(currentNumber));
+      setCurrentNumber('0');
+      setOperation('*');
+    }else {
+      const sum = Number(firstNumber) * Number(currentNumber);
+      setCurrentNumber(String(sum))
+      setOperation('')
+    }
+  }
 
   const handleEquals = () => {
 
@@ -54,6 +65,9 @@ function App() {
             break;
           case '-':
             handleMinusNumbers();
+            break;
+          case '*':
+            handleMultiplicationNumbers();
             break;
           default: 
             break;
@@ -77,7 +91,7 @@ function App() {
           <Button label="7" onClick={() => handleAddNumber('7')}/>
           <Button label="8" onClick={() => handleAddNumber('8')}/>
           <Button label="9" onClick={() => handleAddNumber('9')}/>
-          <Button label="x" onClick={() => handleAddNumber('x')}/>
+          <Button label="x" onClick={handleMultiplicationNumbers}/>
         </Row>
         <Row>
           <Button label="4" onClick={() => handleAddNumber('4')}/>
