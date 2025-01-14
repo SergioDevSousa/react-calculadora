@@ -1,9 +1,9 @@
 import { InputContainer } from './styles';
 
-function Input (){
+function Input ({value}){
     return (
         <InputContainer>
-            <input />
+            <input disabled value = {value}/>
         </InputContainer>
     );
 }
