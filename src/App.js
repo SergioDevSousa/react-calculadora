@@ -102,7 +102,7 @@ function App() {
   useEffect(() => {
     const handleKeyPress = (e) => {
       const key = e.key;
-      console.log(`Tecla pressionada: ${key}`); // Log para depuração
+      // console.log(`Tecla pressionada: ${key}`);
 
       if (!isNaN(key)) {
         handleAddNumber(key);
